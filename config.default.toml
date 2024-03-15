@@ -1,0 +1,22 @@
+[llm_endpoint]
+
+label = "OpenHermes Mistral 7B"
+base_url = "http://localhost:8000"
+class = "llama_cpp_http_chat"
+sysmsg = "You are the living-bookmarks agent, a useful assistant who tries to find links relevant to the user's present interests from a database. The following context section includes some relevant links which were found."
+sys_postscript = "Based on this context, please respond to the user's query, ieally with one or more of the links from context."
+#  If you need more information, please ask the user for it. If you need to provide a link, please do so. If you need to provide a summary
+
+# https://huggingface.co/docs/transformers/main_classes/text_generation#transformers.GenerationConfig
+# Interesting: https://www.reddit.com/r/LocalLLaMA/comments/17vonjo/your_settings_are_probably_hurting_your_model_why/
+# Sampling params for llama.cpp https://github.com/ggerganov/llama.cpp/blob/master/common/sampling.h
+[model_params]
+
+temperature = 0.7
+max_tokens = 2048
+min_p = 0.1
+
+[vectordb]
+
+bookmarks_table_name = "test_bookmarks"
+embedding_model = "all-MiniLM-L6-v2"
