@@ -10,6 +10,7 @@ Prerequisites:
 * Discord app and token
 * PGVector instance running
 * llama.cpp server running an LLM model
+* Python 3.10 or newer
 
 ## Raindrop setup
 
@@ -48,3 +49,19 @@ Make sure you don't have anything running on port 5432, or update the port in th
 For now you probably have to [download, build and run the llama.cpp server](https://github.com/ggerganov/llama.cpp/blob/master/examples/server/README.md)
 
 TODO: Hosted Docker image for llama.cpp running [Phi-2-super GGUF](https://huggingface.co/MaziyarPanahi/phi-2-super-GGUF)
+
+## Python prerequisites
+
+```sh
+pip install -Ur requirements.txt --constraint=constraints.txt
+```
+
+# Confiugure & run the program
+
+Copy `config.default.toml` to `config.toml`, which you can tweak to taste and setup.
+
+Run the program. Note the following assumes you have `LIVING_BOOKMARKS_RAINDROP_KEY` and `LIVING_BOOKMARKS_DISCORD_TOKEN` in the environment, so they're not specified in cmdline.
+
+```sh
+python launch.py --config config.toml
+```
